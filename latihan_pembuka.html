@@ -21,9 +21,16 @@
 		 <h3> Selamat datang! Masukkan email anda : </h3>
 		 <form action="">
 			 <label for="email"> </label>
-		     <input type="text" name="email" placeholder="masukkan email anda" style="color:grey;">
-			 <input type="submit" name="submit_button" style="background-color:red; color:white;">
+		     <input type="text" name="email" placeholder="masukkan email anda" style="color:grey;" id="email_s">
+			 <input type="submit" name="submit_button" style="background-color:red; color:white;" onclick="myFunction();">
 		 </form>
 		 </div>
+		 <script language="javascript">
+			 function myFunction() {
+				 var namaemail;
+				 namaemail=document.getElementById("email_s").value;
+				 alert("Terimakasih Telah Mendaftar" +namaemail);
+			 }
+		 </script>
 	 </body>
 </html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+     <head>
+	 <title>latihan javascript</title>
+	 </head> 
+	 <body>
+		 <form>
+			 <label for="nama">Nama :</label>
+		     <input type="text" name="nama" id="nama">
+			 <br><br>
+			 <label for="jurusan">Jurusan :</label>
+		     <select name="jrsn" id="jurusan">
+			     <option value="BSD-Bandung">BSD-BDG</option>
+				 <option value="BSD-Jakarta">BSD-JKT</option>
+			 </select>
+			 <br><br>
+			 <label for="jk">Jumlah Kursi :</label>
+		     <input type="number" name="jk" id="jumlah_kursi">
+			 <br><br>
+			 <label for="status">Status Member :</label>
+		     <input type="radio" name="status" id="rad1" value="mem">Member
+			 <input type="radio" name="status" id="rad2" value="nonmem">Non Member
+			 <br><br>
+			 <label for="setuju"></label>
+		     <input type="checkbox" name="setuju" id="check" value="sayasetuju">Saya setuju dengan data diatas
+			 <br><br>
+			 <input type="submit" name="submit_button" value="proses" onclick="kirim();">
+			 <br><br>
+		     <textarea id="hasil" cols="50" rows="10"></textarea>
+		 </form>
+		 
+		 <script type="text/javascript">
+			 function kirim() {
+				 var aggrement=document.getElementById("check");
+				 var hasil=null;
+				 
+				 if (aggrement.checked){
+					 //ambil nama
+					 var nama=document.getElementById("nama").value;
+					 //ambil jumlah kursi
+					 var jumlah_kursi=document.getElementById("jumlah_kursi").value;
+					 //deklarasi variabel untuk radio(member)
+					 var radio1=document.getElementById("rad1");
+					 var radio2=document.getElementById("rad2");
+					 //ambil jurusan
+					 var jurusan=document.getElementById("jurusan").value;
+					 //variabel untuk menghitung-hitung
+					 var status,harga,total,diskon,bayar;
+					 //validasi agar tidak ada data yang kosong
+					 if(nama!="" && jumlah_kursi!="" && jurusan!="" && (radio1.checked||radio2.checked)) {
+						 //kondisi untuk cek jurusan dan menetapkan harga
+						 if(jurusan=="BSD-Bandung"){
+							 harga=100000;
+						 }
+						 else if(jurusan=="BSD-Jakarta"){
+							 harga=50000;
+						 }
+						 //menghitung total dari harga * jumlah kursi
+						 total=harga*jumlah_kursi;
+						 //mengecek status member dan menghitung diskon
+						 if(radio1.checked)
+						 {
+							 status="mem";
+							 diskon=total*0.3;
+						 }
+						 else if(radio2.checked)
+						 {
+							 status="nonmem";
+							 diskon=0;
+						 }
+						 //menghitung total bayar yaitu total-diskon
+						 bayar=total-diskon;
+						 //mencetak data di textarea
+						 document.getElementById("hasil").innerHTML="Nama pemesan :"+nama+"\n"
+																	+"Jurusan :"+jurusan+"\n"
+																	+"Harga tiket :"+harga+"\n"
+																	+"Jumlah kursi :"+jumlah_kursi+"\n"
+																	+"Total :"+total+"\n"
+																	+"Status :"+status+"maka diskon"+diskon+"\n"
+																	+"Total yang harus dibayar :"+bayar;
+				 
+					 }
+					 else {
+						 //alert jika ada yg belum diisi
+						 alert("lengkapi terlebih dahulu");
+					 }
+				 }
+				 else {
+					 //alert jika belum mencentang checkbox
+					 alert("anda wajib menyetujui ketentuan di atas");
+				 }
+			 }
+		 </script>
+	 </body>
+</html>
