@@ -71,24 +71,27 @@
 					 
 					 <tr>
 						 <td> <input type="text" name="angka" id="angka1"> </td>
-						 <td> </td>
+						 <td> <p id="muncul"></p> </td>
 						 <td> <input type="text" name="angka" id="angka2"> </td>
 					 </tr>
 					 
 					 <tr>
-						 <td> <input type="radio" name="operasi" id="tambah" value="+"> + </td>
-						 <td> <input type="radio" name="operasi" id="kurang" value="-"> - </td>
-						 <td> <input type="radio" name="operasi" id="kali" value="*"> * </td>
-						 <td> <input type="radio" name="operasi" id="bagi" value="/"> / </td>
+						 <td> <input type="radio" name="operasi" id="tambah" value="+" onchange="ganti();"> + </td>
+						 <td> <input type="radio" name="operasi" id="kurang" value="-" onchange="ganti();"> - </td>
+						 <td> <input type="radio" name="operasi" id="kali" value="*" onchange="ganti();"> * </td>
+						 <td> <input type="radio" name="operasi" id="bagi" value="/" onchange="ganti();"> / </td>
 					 </tr>
 					 
 					 <tr>
-						 <td> <input type="submit" name="submit_button" value="hitung"> </td>
+						 <td> <input type="submit" name="submit_button" value="hitung" onclick="hitung();"> </td>
 						 <td> <input type="reset" name="reset_button" value="reset"> </td>
 					 </tr>
 					 
 					 </table>
 					 <br><br><br>
+					 
+					 <p id="hasil"></p>
+					 
 				 </div>
 			 </div>
 			 <div class="col-md-3">
@@ -113,5 +116,51 @@
 			 <div class="col-md-2">
 			 </div>
 		 </div>
+		 
+		 <script type="text/javascript">
+			 var radio1=document.getElementById("tambah");
+			 var radio2=document.getElementById("kurang");
+			 var radio3=document.getElementById("kali");
+			 var radio4=document.getElementById("bagi");
+			 
+			 function ganti() {
+				 if(radio1.checked){
+					 document.getElementById("muncul").innerHTML=radio1.value;
+				 }
+				 else if(radio2.checked){
+					 document.getElementById("muncul").innerHTML=radio2.value;
+				 }
+				 else if(radio3.checked){
+					 document.getElementById("muncul").innerHTML=radio3.value;
+				 }
+				 else if(radio4.checked){
+					 document.getElementById("muncul").innerHTML=radio4.value;
+				 }
+			 }
+			 
+			 function hitung() {
+				 var A=parseInt(document.getElementById("angka1").value);
+				 var B=parseInt(document.getElementById("angka2").value);
+				 var hasilangka;
+				 
+				 if(radio1.checked){
+					 hasilangka=A+B;
+					 document.getElementById("hasil").innerHTML= A + radio1.value + B + "=" + hasilangka;
+				 }
+				 else if(radio2.checked){
+					 hasilangka=A-B;
+					 document.getElementById("hasil").innerHTML= A + radio2.value + B + "=" + hasilangka;
+				 }
+				 else if(radio3.checked){
+					 hasilangka=A*B;
+					 document.getElementById("hasil").innerHTML= A + radio3.value + B + "=" + hasilangka;
+				 }
+				 else if(radio4.checked){
+					 hasilangka=A/B;
+					 document.getElementById("hasil").innerHTML= A + radio4.value + B + "=" + hasilangka;
+				 }
+			 }
+			 
+		 </script>
 	 </body>
 </html>
