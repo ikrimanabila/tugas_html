@@ -4,6 +4,7 @@
 	 <title>latihan javascript</title>
 	 </head> 
 	 <body>
+		 <form>
 			 <label for="nama">Nama :</label>
 		     <input type="text" name="nama" id="nama">
 			 <br><br>
@@ -23,14 +24,13 @@
 			 <label for="setuju"></label>
 		     <input type="checkbox" name="setuju" id="check" value="sayasetuju">Saya setuju dengan data diatas
 			 <br><br>
-			 <input type="submit" name="submit_button" value="proses" onclick="kirim();">
+			 <input type="button" value="proses" onclick="kirim();">
 			 <br><br>
 		     <textarea id="hasil" cols="50" rows="10"></textarea>
-		 
+		 </form>
 		 <script type="text/javascript">
 			 function kirim() {
 				 var aggrement=document.getElementById("check");
-				 var hasil=null;
 				 
 				 if (aggrement.checked){
 					 //ambil nama
